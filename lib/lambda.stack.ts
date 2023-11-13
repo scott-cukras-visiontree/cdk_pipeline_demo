@@ -8,7 +8,7 @@ export class LambdaStack extends Stack {
   constructor(scope: Construct, id: string, deploymentStage: string, props?: StackProps) {
     super (scope, id, props)
 
-    new NodejsFunction(this, 'lambdaHello', {
+    new NodejsFunction(this, `lambdaHello-${deploymentStage}`, {
       runtime: Runtime.NODEJS_18_X,
       handler: 'hello',
       entry: './lib/lambdas/handlers.ts',
@@ -19,10 +19,10 @@ export class LambdaStack extends Stack {
       memorySize: 128,
       timeout: Duration.seconds(5),
       architecture: Architecture.ARM_64,
-      functionName: 'hello'
+      functionName: `hello${deploymentStage}`
     })
 
-    new NodejsFunction(this, 'lambdaGoodbye', {
+    new NodejsFunction(this, `lambdaGoodbye-${deploymentStage}`, {
       runtime: Runtime.NODEJS_18_X,
       handler: 'goodbye',
       entry: './lib/lambdas/handlers.ts',
@@ -33,7 +33,7 @@ export class LambdaStack extends Stack {
       memorySize: 128,
       timeout: Duration.seconds(5),
       architecture: Architecture.ARM_64,
-      functionName: 'goodbye'
+      functionName: `goodbye${deploymentStage}`
     })
   }
 }

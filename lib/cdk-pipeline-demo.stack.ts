@@ -33,7 +33,7 @@ export class CdkPipelineDemoStack extends cdk.Stack {
     }))
 
     pipeline.addStage( new DemoStage(this, 'prod', {
-      env: { account, region: prodRegion }
+      env: { account, region }
     }))
   }
 }
