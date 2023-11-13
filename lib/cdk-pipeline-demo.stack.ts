@@ -22,7 +22,7 @@ export class CdkPipelineDemoStack extends cdk.Stack {
         commands: [
           'npm ci',
           'npm run build',
-          'npx cdk synth',
+          'npx cdk synth -- -v',
         ],
         primaryOutputDirectory: './cdk.out',
       })
