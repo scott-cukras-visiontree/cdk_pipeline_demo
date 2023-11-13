@@ -3,7 +3,7 @@ import { Architecture, Runtime } from "aws-cdk-lib/aws-lambda";
 import { NodejsFunction } from "aws-cdk-lib/aws-lambda-nodejs";
 import { RetentionDays } from "aws-cdk-lib/aws-logs";
 import { Construct } from "constructs";
-import path = require("path");
+import * as path from 'path'
 
 export class LambdaStack extends Stack {
   constructor(scope: Construct, id: string, deploymentStage: string, props?: StackProps) {
@@ -12,7 +12,7 @@ export class LambdaStack extends Stack {
     new NodejsFunction(this, 'lambdaHello', {
       runtime: Runtime.NODEJS_18_X,
       handler: 'hello',
-      entry: path.join(__dirname, 'lambdas/handlers.ts'),
+      entry: path.join(__dirname, '/lambdas/handlers.ts'),
       environment: {
         'DEPLOYMENT_STAGE': deploymentStage
       },
@@ -26,7 +26,7 @@ export class LambdaStack extends Stack {
     new NodejsFunction(this, 'lambdaGoodbye', {
       runtime: Runtime.NODEJS_18_X,
       handler: 'goodbye',
-      entry: path.join(__dirname, 'lambdas/handlers.ts'),
+      entry: path.join(__dirname, '/lambdas/handlers.ts'),
       environment: {
         'DEPLOYMENT_STAGE': deploymentStage
       },
