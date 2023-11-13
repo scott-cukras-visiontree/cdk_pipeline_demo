@@ -11,8 +11,8 @@ export class LambdaStack extends Stack {
 
     new NodejsFunction(this, 'lambdaHello', {
       runtime: Runtime.NODEJS_18_X,
-      handler: 'handlers.hello',
-      entry: path.join(__dirname, 'lambdas'),
+      handler: 'hello',
+      entry: path.join(__dirname, 'lambdas/handlers.ts'),
       environment: {
         'DEPLOYMENT_STAGE': deploymentStage
       },
@@ -25,8 +25,8 @@ export class LambdaStack extends Stack {
 
     new NodejsFunction(this, 'lambdaGoodbye', {
       runtime: Runtime.NODEJS_18_X,
-      handler: 'handlers.goodbye',
-      entry: path.join(__dirname, 'lambdas'),
+      handler: 'goodbye',
+      entry: path.join(__dirname, 'lambdas/handlers.ts'),
       environment: {
         'DEPLOYMENT_STAGE': deploymentStage
       },

@@ -4,7 +4,7 @@ import { LambdaStack } from "./lambda.stack";
 
 export class DemoStage extends Stage {
   constructor(scope: Construct, deploymentStage: string, props?: StageProps) {
-    super(scope, `${deploymentStage}_Stage`, props)
+    super(scope, `${deploymentStage}-Stage`, props)
 
     new LambdaStack(this, 'LambdaStack', deploymentStage)
   }
