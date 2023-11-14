@@ -2,7 +2,6 @@ import * as cdk from 'aws-cdk-lib';
 import { CodePipeline, CodePipelineSource, ShellStep } from 'aws-cdk-lib/pipelines';
 import { Construct } from 'constructs';
 import { DemoStage } from './cdk-pipeline-demo.stage';
-// import * as sqs from 'aws-cdk-lib/aws-sqs';
 
 interface CdkPipelineDemoStackProps extends cdk.StackProps {
   prodRegion: string
@@ -33,9 +32,9 @@ export class CdkPipelineDemoStack extends cdk.Stack {
       deploymentStage: 'dev',
     }))
 
-    // pipeline.addStage( new DemoStage(this, 'prod', {
-    //   env: { account, region },
-    //   deploymentStage: 'prod',
-    // }))
+    pipeline.addStage( new DemoStage(this, 'prod', {
+      env: { account, region: prodRegion },
+      deploymentStage: 'prod',
+    }))
   }
 }

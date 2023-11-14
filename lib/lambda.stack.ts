@@ -26,18 +26,18 @@ export class LambdaStack extends Stack {
       functionName: `hello${props.deploymentStage}`
     })
 
-    // new NodejsFunction(this, `lambdaGoodbye-${props.deploymentStage}`, {
-    //   runtime: Runtime.NODEJS_18_X,
-    //   handler: 'goodbye',
-    //   entry: './lib/lambdas/handlers.ts',
-    //   environment: {
-    //     'DEPLOYMENT_STAGE': props.deploymentStage
-    //   },
-    //   logRetention: RetentionDays.ONE_DAY,
-    //   memorySize: 128,
-    //   timeout: Duration.seconds(5),
-    //   architecture: Architecture.ARM_64,
-    //   functionName: `goodbye${props.deploymentStage}`
-    // })
+    new NodejsFunction(this, `lambdaGoodbye-${props.deploymentStage}`, {
+      runtime: Runtime.NODEJS_18_X,
+      handler: 'goodbye',
+      entry: './lib/lambdas/goodbye.ts',
+      environment: {
+        'DEPLOYMENT_STAGE': props.deploymentStage
+      },
+      logRetention: RetentionDays.ONE_DAY,
+      memorySize: 128,
+      timeout: Duration.seconds(5),
+      architecture: Architecture.ARM_64,
+      functionName: `goodbye${props.deploymentStage}`
+    })
   }
 }
