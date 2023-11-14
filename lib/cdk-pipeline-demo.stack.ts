@@ -9,7 +9,7 @@ interface CdkPipelineDemoStackProps extends cdk.StackProps {
 }
 
 export class CdkPipelineDemoStack extends cdk.Stack {
-  constructor(scope: Construct, id: string, props?: CdkPipelineDemoStackProps) {
+  constructor(scope: Construct, id: string, props: CdkPipelineDemoStackProps) {
     super(scope, id, props);
 
     const { account, region } = props?.env as { account: string, region: string }
@@ -22,18 +22,20 @@ export class CdkPipelineDemoStack extends cdk.Stack {
         commands: [
           'npm ci',
           'npm run build',
-          'npx cdk synth -- -v',
+          'npx cdk synth',
         ],
         primaryOutputDirectory: './cdk.out',
       })
     })
 
     pipeline.addStage( new DemoStage(this, 'dev', {
-      env: { account, region }
+      env: { account, region },
+      deploymentStage: 'dev',
     }))
 
-    pipeline.addStage( new DemoStage(this, 'prod', {
-      env: { account, region }
-    }))
+    // pipeline.addStage( new DemoStage(this, 'prod', {
+    //   env: { account, region },
+    //   deploymentStage: 'prod',
+    // }))
   }
 }

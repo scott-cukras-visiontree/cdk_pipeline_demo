@@ -2,10 +2,14 @@ import { Stage, StageProps } from "aws-cdk-lib";
 import { Construct } from "constructs";
 import { LambdaStack } from "./lambda.stack";
 
-export class DemoStage extends Stage {
-  constructor(scope: Construct, deploymentStage: string, props?: StageProps) {
-    super(scope, `${deploymentStage}-Stage`, props)
+interface DemoStageProps extends StageProps {
+  deploymentStage: string
+}
 
-    new LambdaStack(this, 'LambdaStack', deploymentStage)
+export class DemoStage extends Stage {
+  constructor(scope: Construct, id: string, props: DemoStageProps) {
+    super(scope, `${id}-${props.deploymentStage}-Stage`, props)
+
+    new LambdaStack(this, `LambdaStack-${props.deploymentStage}`, props)
   }
 }
