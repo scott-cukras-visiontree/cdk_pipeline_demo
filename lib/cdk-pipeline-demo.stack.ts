@@ -32,11 +32,11 @@ export class CdkPipelineDemoStack extends cdk.Stack {
       deploymentStage: 'dev',
     }))
 
-    devStage.addPost(new ManualApprovalStep('Approve deployment before release to production'))
-
-    pipeline.addStage( new DemoStage(this, 'prod', {
+    const prodStage = pipeline.addStage(new DemoStage(this, 'prod', {
       env: { account, region: prodRegion },
       deploymentStage: 'prod',
     }))
+
+    prodStage.addPre(new ManualApprovalStep('Approve deployment before release to production'))
   }
 }
