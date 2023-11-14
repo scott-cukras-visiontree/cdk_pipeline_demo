@@ -1,5 +1,5 @@
 import * as cdk from 'aws-cdk-lib';
-import { CodePipeline, CodePipelineSource, ShellStep } from 'aws-cdk-lib/pipelines';
+import { CodePipeline, CodePipelineSource, ManualApprovalStep, ShellStep } from 'aws-cdk-lib/pipelines';
 import { Construct } from 'constructs';
 import { DemoStage } from './cdk-pipeline-demo.stage';
 
@@ -27,10 +27,12 @@ export class CdkPipelineDemoStack extends cdk.Stack {
       })
     })
 
-    pipeline.addStage( new DemoStage(this, 'dev', {
+    const devStage = pipeline.addStage( new DemoStage(this, 'dev', {
       env: { account, region },
       deploymentStage: 'dev',
     }))
+
+    devStage.addPost(new ManualApprovalStep('Approve deployment before release to production'))
 
     pipeline.addStage( new DemoStage(this, 'prod', {
       env: { account, region: prodRegion },

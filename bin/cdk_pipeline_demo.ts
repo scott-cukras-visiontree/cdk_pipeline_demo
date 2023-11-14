@@ -8,7 +8,6 @@ new CdkPipelineDemoStack(app, 'CdkPipelineDemoStack', {
   env: {
     account: '535911648344',
     region: 'us-west-2',
-    // prodRegion: 'us-east-2',
   },
   prodRegion: 'us-east-2',
 });
