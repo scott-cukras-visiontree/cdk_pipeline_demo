@@ -21,7 +21,7 @@ export class CdkPipelineDemoStack extends cdk.Stack {
         input: CodePipelineSource.gitHub('scott-cukras-visiontree/cdk_pipeline_demo', 'main'),
         commands: [
           'npm ci',
-          'npm run build',
+          // 'npm run build',
           'npx cdk synth',
         ],
         primaryOutputDirectory: './cdk.out',

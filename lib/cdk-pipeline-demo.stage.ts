@@ -8,7 +8,7 @@ interface DemoStageProps extends StageProps {
 
 export class DemoStage extends Stage {
   constructor(scope: Construct, id: string, props: DemoStageProps) {
-    super(scope, `${id}-${props.deploymentStage}-Stage`, props)
+    super(scope, `${id}-Stage`, props)
 
     new LambdaStack(this, `LambdaStack-${props.deploymentStage}`, props)
   }

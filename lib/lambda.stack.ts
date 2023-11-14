@@ -22,7 +22,7 @@ export class LambdaStack extends Stack {
       logRetention: RetentionDays.ONE_DAY,
       memorySize: 128,
       timeout: Duration.seconds(5),
-      architecture: Architecture.X86_64,
+      architecture: Architecture.ARM_64,
       functionName: `hello${props.deploymentStage}`
     })
 
