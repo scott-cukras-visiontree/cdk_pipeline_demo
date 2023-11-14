@@ -1,8 +1,8 @@
-import { Duration, Stack, StackProps } from "aws-cdk-lib";
-import { Architecture, Runtime } from "aws-cdk-lib/aws-lambda";
-import { NodejsFunction } from "aws-cdk-lib/aws-lambda-nodejs";
-import { RetentionDays } from "aws-cdk-lib/aws-logs";
-import { Construct } from "constructs";
+import { Duration, Stack, StackProps } from 'aws-cdk-lib'
+import { Architecture, Runtime } from 'aws-cdk-lib/aws-lambda'
+import { NodejsFunction } from 'aws-cdk-lib/aws-lambda-nodejs'
+import { RetentionDays } from 'aws-cdk-lib/aws-logs'
+import { Construct } from 'constructs'
 
 interface DemoLambdaProps extends StackProps {
   deploymentStage: string

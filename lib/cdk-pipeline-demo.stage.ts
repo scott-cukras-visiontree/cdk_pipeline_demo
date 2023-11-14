@@ -1,6 +1,6 @@
-import { Stage, StageProps } from "aws-cdk-lib";
-import { Construct } from "constructs";
-import { LambdaStack } from "./lambda.stack";
+import { Stage, StageProps } from 'aws-cdk-lib'
+import { Construct } from 'constructs'
+import { LambdaStack } from './lambda.stack'
 
 interface DemoStageProps extends StageProps {
   deploymentStage: string

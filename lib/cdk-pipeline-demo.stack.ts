@@ -1,7 +1,7 @@
-import * as cdk from 'aws-cdk-lib';
-import { CodePipeline, CodePipelineSource, ManualApprovalStep, ShellStep } from 'aws-cdk-lib/pipelines';
-import { Construct } from 'constructs';
-import { DemoStage } from './cdk-pipeline-demo.stage';
+import * as cdk from 'aws-cdk-lib'
+import { CodePipeline, CodePipelineSource, ManualApprovalStep, ShellStep } from 'aws-cdk-lib/pipelines'
+import { Construct } from 'constructs'
+import { DemoStage } from './cdk-pipeline-demo.stage'
 
 interface CdkPipelineDemoStackProps extends cdk.StackProps {
   prodRegion: string
@@ -9,7 +9,7 @@ interface CdkPipelineDemoStackProps extends cdk.StackProps {
 
 export class CdkPipelineDemoStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props: CdkPipelineDemoStackProps) {
-    super(scope, id, props);
+    super(scope, id, props)
 
     const { account, region } = props?.env as { account: string, region: string }
     const { prodRegion } = props as CdkPipelineDemoStackProps
